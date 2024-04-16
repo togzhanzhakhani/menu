@@ -1,0 +1,10 @@
+{% for item in menu_items %}
+    <ul>
+        <li><a href="{% url 'menu_view' menu_url=item.url.lower %}">{{ item.title }}</a></li>
+        {% for child in item.children.all %}
+            <ul>
+                <li><a href="{% url 'menu_view' menu_url=child.title.lower %}">{{ child.title }}</a></li>
+            </ul>
+        {% endfor %}
+    </ul>
+{% endfor %}
